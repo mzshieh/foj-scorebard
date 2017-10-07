@@ -41,7 +41,6 @@ def calculate_score(pids=[], deadline='2099-10-01 00:00:00'):
     return score
 
 def main():
-    print(args.problems)
     if args.meta:
         with open(args.meta, 'r') as fp:
             hws = json.load(fp)
@@ -51,7 +50,6 @@ def main():
         idx = hw['id']
         pids = sorted(hw['pids'])
         score = calculate_score(pids, hw['deadline'])
-        print(score)
         B = {k: [v[p] for p in pids] for k, v in score.items()}
         H = ['ID']+pids
         path = 'HW{0}.html'.format(idx)

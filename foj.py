@@ -11,7 +11,6 @@ class FOJ:
 
     def get_users(self,reverse=False):
         url=self.api+'groups/{}/users/'.format(self.gid)
-        print(self.cookies)
         res = requests.get(url,cookies=self.cookies).text
         if reverse:
             return {user['id']:user['name'] for user in json.loads(res)['msg']}
