@@ -4,10 +4,10 @@ import requests
 import json
 
 class FOJ:
-    def __init__(self,api_base,group_id,cookies):
+    def __init__(self,api_base,group_id,token):
         self.api = api_base
         self.gid = group_id
-        self.cookies = {'token':cookies}
+        self.cookies = {'token':token}
 
     def get_users(self,reverse=False):
         url=self.api+'groups/{}/users/'.format(self.gid)

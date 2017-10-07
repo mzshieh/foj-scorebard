@@ -5,7 +5,7 @@ from gen import table
 parser = argparse.ArgumentParser(description='Generate Homework Scores')
 parser.add_argument('-g','--group',type=int,default=7,
                     help='Group ID')
-parser.add_argument('-c','--cookies',type=str,default='',
+parser.add_argument('-t','--token',type=str,default='',
                     help='Cookies')
 parser.add_argument('-a','--api',type=str,default='https://api.oj.nctu.me/',
                     help='Formosa OJ API base URL (default: %(default)s)')
@@ -26,7 +26,7 @@ def read_user_list(filename):
     return sorted(users)
 
 def calculate_score(pids=[], deadline='2099-10-01 00:00:00'):
-    oj = FOJ(args.api,args.group,args.cookies)
+    oj = FOJ(args.api,args.group,args.token)
     time_format = '%Y-%m-%d %H:%M:%S'
     deadline = datetime.datetime.strptime(deadline, time_format)
     users = oj.get_users(reverse=True)
